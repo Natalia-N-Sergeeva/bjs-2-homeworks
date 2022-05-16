@@ -20,8 +20,41 @@ library.addBook(new NovelBook("Герберт Уэллс", "Машина вре�
 library.addBook(new Magazine("Мурзилка", 1924, 60));
 
 console.log(library.findBookBy("name", "Властелин колец")); //null
-console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
+console.log(library.findBookBy("releaseDate", 1924)); //"Мурзилка"
 
 console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
 library.giveBookByName("Машина времени");
 console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
+
+
+
+
+
+const myLibrary = new Library("Домашняя библиотека");
+
+myLibrary.addBook(new NovelBook("Сомерсет Моэм","Острие бритвы", 2003, 429));
+
+myLibrary.addBook(new FantasticBook("Герберт Уэллс", "Машина Времени", 2009, 399));
+
+myLibrary.addBook(new FantasticBook("Жюль Верн", "Таинственный остров", 1919, 530));
+
+console.log(myLibrary.findBookBy("releaseDate", "1919"));
+
+const givenBook = myLibrary.giveBookByName("Острие бритвы")
+
+console.log(givenBook);
+
+
+
+
+
+givenBook.state=30;
+console.log(givenBook.state);
+
+givenBook.fix();
+console.log(givenBook.state);
+
+
+myLibrary.addBook(givenBook);
+
+console.log(myLibrary.findBookBy("name", "Острие бритвы"));
