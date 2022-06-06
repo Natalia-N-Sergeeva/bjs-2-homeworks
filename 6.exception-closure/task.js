@@ -8,7 +8,7 @@ function parseCount(value){
  
 function  validateCount(value){
  try {
- return resultOfParsing = parseCount(value);
+ return  parseCount(value);
      
  } catch (e) {
  return e;
@@ -20,27 +20,25 @@ class Triangle {
      this.sideOfTriangle1=sideOfTriangle1;
      this.sideOfTriangle2=sideOfTriangle2;
      this.sideOfTriangle3=sideOfTriangle3;
-    
-     if (this.sideOfTriangle1 > (this.sideOfTriangle2 + this.sideOfTriangle3)){;
+         
+     if ((sideOfTriangle1 > (sideOfTriangle2 + sideOfTriangle3))||(sideOfTriangle2 > (sideOfTriangle1 + sideOfTriangle3))||(sideOfTriangle3 > (sideOfTriangle1 + sideOfTriangle2))){
       throw new Error ("Треугольник с такими сторонами не существует");
-     } else if (this.sideOfTriangle2 > (this.sideOfTriangle1 + this.sideOfTriangle3)){
-        throw new Error ("Треугольник с такими сторонами не существует");
-    } else if (this.sideOfTriangle3 > (this.sideOfTriangle1 + this.sideOfTriangle2)){
-        throw new Error ("Треугольник с такими сторонами не существует");
      }
     }
 
+   
+
  getPerimeter() {
-     return this.perimeter=this.sideOfTriangle1 + this.sideOfTriangle2 + this.sideOfTriangle3;
+     return this.sideOfTriangle1 + this.sideOfTriangle2 + this.sideOfTriangle3;
     }
   
  getArea() {
-     let halfPerimeter=(this.sideOfTriangle1 + this.sideOfTriangle2 + this.sideOfTriangle3)/2;
+     let halfPerimeter=this.getPerimeter()/2;
      let square=Math.sqrt(halfPerimeter*(halfPerimeter-this.sideOfTriangle1)*(halfPerimeter-this.sideOfTriangle2)*(halfPerimeter-this.sideOfTriangle3));
-     return this.square=Math.round(square*1000)/1000;
+     return Math.round(square*1000)/1000;
      }
    
-
+ 
  }
 
 
@@ -49,21 +47,21 @@ function getTriangle(sideOfTriangleA, sideOfTriangleB, sideOfTriangleC){
      return new Triangle(sideOfTriangleA, sideOfTriangleB, sideOfTriangleC);
      
  } catch (err){
-    class fakeTriangle{
-        constructor(){
-            this.message=("Ошибка! Треугольник не существует");
-        }
-     
+     return fakeTriangle = {
+                  
      getPerimeter() {
-      return this.message;
-     }
+      return message = "Ошибка! Треугольник не существует"
+     },
      getArea() {
-      return this.message;
-     }
-   }
-   return new fakeTriangle;
+      return message = "Ошибка! Треугольник не существует"
+     },
  }
+
 }
+
+}
+
+
 
 
  
