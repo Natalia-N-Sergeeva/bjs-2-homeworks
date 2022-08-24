@@ -14,14 +14,15 @@ function cachingDecoratorNew(func) {
 
     if (cache.length > 5) { 
        cache.shift();
-     }
+      } 
      
-     console.log("Вычисляем: " + result);
-     return "Вычисляем: " + result;  
-     }
-    return wrapper;
+    console.log("Вычисляем: " + result);
+    return "Вычисляем: " + result;  
+  }
+
+  return wrapper;
   
- }
+}
 
 
 
@@ -31,28 +32,27 @@ function debounceDecoratorNew(func, ms) {
 
   let flag=0;   
 
- return function (...args) { 
+  return function (...args) { 
 
-   clearTimeout(timeout); 
+    clearTimeout(timeout); 
 
-   timeout = setTimeout(() => {            
+    timeout = setTimeout(() => {            
    
-     func.apply(this, args); 
+      func.apply(this, args); 
    
      }, ms);
 
-   if (flag==1){
+    if (flag==1){
      return;
-     }
+    }
 
-   func.apply(this, args);
+    func.apply(this, args);
 
-   flag=1;
+    flag=1;
   
-  };    
+  };
 
-  
- }
+}
 
    
 function debounceDecorator2(func, ms) {
@@ -65,25 +65,25 @@ function debounceDecorator2(func, ms) {
 
   function wrapper(...args){ 
   
-  wrapper.count++;
+    wrapper.count++;
 
-   clearTimeout(timeout); 
+    clearTimeout(timeout); 
 
-   timeout = setTimeout(() => {            
+    timeout = setTimeout(() => {            
    
      func.apply(this, args); 
    
      }, ms);
 
-   if (flag==1){
+    if (flag==1){
      return;
      }
 
-   func.apply(this, args);
+    func.apply(this, args);
 
-   flag=1;
+    flag=1;
 
- }
+  }
 
   return wrapper; 
 
