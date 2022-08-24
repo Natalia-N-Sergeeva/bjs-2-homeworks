@@ -24,64 +24,46 @@ function cachingDecoratorNew(func) {
  }
 
 
+ 
 
 function debounceDecoratorNew(func, ms) {
   
-  let timeout; 
+  let flag;   
 
-  let flag=0;   
-
- return function (...args) { 
-
-   clearTimeout(timeout); 
-
-   timeout = setTimeout(() => {            
-   
-     func.apply(this, args); 
-   
-     }, ms);
-
+  return function (...args) { 
+  
    if (flag==1){
      return;
      }
 
-   func.apply(this, args);
+  func.apply(this, args);
 
-   flag=1;
-  
-  };    
+  flag=1;
 
-  
+  setTimeout(() => flag=0, ms); 
+
  }
+}
 
    
 function debounceDecorator2(func, ms) {
 
-  let timeout;
-
-  let flag=0; 
-
+  let flag; 
   wrapper.count=0;  
 
   function wrapper(...args){ 
   
   wrapper.count++;
 
-   clearTimeout(timeout); 
-
-   timeout = setTimeout(() => {            
-   
-     func.apply(this, args); 
-   
-     }, ms);
-
    if (flag==1){
      return;
-     }
+  }
 
-   func.apply(this, args);
+  func.apply(this, args);
 
-   flag=1;
+  flag=1;
+
+  setTimeout(() => flag=0, ms);
 
  }
 
